@@ -9,3 +9,11 @@ python-dotenv
 openai
 supabase
 gunicorn
+pandas
+numpy
+psycopg2-binary
+celery
+redis
+requests
+python-dotenv
+openai
