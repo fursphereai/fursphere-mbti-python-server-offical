@@ -5,7 +5,7 @@ import json
 import requests
 from datetime import datetime
 from typing import Dict, Any
-from config import DB_CONFIG, AI_SERVER_URL, REDIS_URL
+from config import  AI_SERVER_URL, REDIS_URL
 from mbti_calculator import calculate_mbti
 from celery.utils.log import get_task_logger
 from pathlib import Path
