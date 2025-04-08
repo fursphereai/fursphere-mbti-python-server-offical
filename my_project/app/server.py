@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import json
 import psycopg2
-from config import DB_CONFIG
+# from config import DB_CONFIG
 from tasks import process_ai_task
 from pathlib import Path
 from dotenv import load_dotenv
