@@ -21,8 +21,8 @@ supabase = create_client(supabase_url, supabase_key)
 
 app = Flask(__name__)
 
-def connect_db():
-    return psycopg2.connect(**DB_CONFIG)
+# def connect_db():
+#     return psycopg2.connect(**DB_CONFIG)
 
 @app.route('/receive_data', methods=['POST'])
 def receive_data():
