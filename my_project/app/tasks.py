@@ -14,6 +14,13 @@ import os
 from supabase import create_client
 
 # Get the path to the .env file in ai_service
+
+
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 env_path = Path(__file__).parent.parent / 'ai_service' / '.env'
 load_dotenv(env_path)
 
