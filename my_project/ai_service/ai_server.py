@@ -196,12 +196,22 @@ def generate_mbti_do_dont(m_score, b_score, t_score, i_score):
 async def process_ai(input: AIInput):
     try:
         # Get input data
-        pet_name = input.input_data["pet_name"]
-        pet_gender = input.input_data["pet_gender"]
-        pet_age = input.input_data["pet_age"]
-        pet_type = input.input_data["pet_type"]
-        pet_breed = input.input_data["pet_breed"]
-        mbti_scores = input.input_data["mbti_scores"]
+        # pet_name = input.input_data["pet_name"]
+        # pet_gender = input.input_data["pet_gender"]
+        # pet_age = input.input_data["pet_age"]
+        # pet_type = input.input_data["pet_type"]
+        # pet_breed = input.input_data["pet_breed"]
+        # mbti_scores = input.input_data["mbti_scores"]
+
+
+        pet_name = input.get("pet_name")
+        pet_gender = input.get("pet_gender")
+        pet_age = input.get("pet_age")
+        pet_type = input.get("pet_type")
+        pet_breed = input.get("pet_breed")
+        mbti_scores = input.get("mbti_scores")
+
+        print('mbti_scores:', mbti_scores)
         
         # Generate MBTI description
         mbti_description = generate_mbti_description(

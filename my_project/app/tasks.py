@@ -82,6 +82,7 @@ def process_ai_task(self, task_id: int):
             "mbti_scores": {k: round(v) for k, v in mbti_scores.items()}  # 四舍五入为整数
         }
         
+        
         # 5. 调用AI服务
         ai_response = requests.post(
             f"{AI_SERVER_URL}/ai",
