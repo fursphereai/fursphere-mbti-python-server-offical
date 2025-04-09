@@ -38,7 +38,7 @@ def receive_data():
         # cursor = conn.cursor()
 
         # 1. Flask API Stores Data in PostgreSQL
-
+        print('process_ai_task:', process_ai_task)
 
         print("Values to insert:", (
             survey_data["user_info"].get("name", ""),
