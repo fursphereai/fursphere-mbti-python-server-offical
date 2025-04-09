@@ -5,7 +5,7 @@ import json
 import requests
 from datetime import datetime
 from typing import Dict, Any
-from app.config import  AI_SERVER_URL, REDIS_URL
+from config import  AI_SERVER_URL, REDIS_URL
 from mbti_calculator import calculate_mbti
 from celery.utils.log import get_task_logger
 from pathlib import Path
@@ -26,7 +26,7 @@ supabase_key = os.getenv('SUPABASE_KEY')
 supabase = create_client(supabase_url, supabase_key)
 
 logger = get_task_logger(__name__)
-
+print('REDIS_URL:', REDIS_URL)
 app = Celery('tasks', broker=REDIS_URL)
 
 @app.task(bind=True, max_retries=3)
