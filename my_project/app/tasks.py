@@ -85,7 +85,7 @@ def process_ai_task(self, task_id: int):
         
         # 5. 调用AI服务
         ai_response = requests.post(
-            f"{AI_SERVER_URL}/ai",
+            f"{AI_SERVER_URL}ai",
             json={"input_data": ai_input},
             timeout=200  # 增加超时时间
         )
