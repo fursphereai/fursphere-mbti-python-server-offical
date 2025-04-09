@@ -110,7 +110,8 @@ def process_ai_task(self, task_id: int):
         # )
 
 
-        url = "https://ai-server-production-b3f3.up.railway.app/ai"
+        # url = "https://ai-server-production-b3f3.up.railway.app/ai"
+        url = AI_SERVER_URL.rstrip("/") + "/ai"
         payload = {
             "input_data": ai_input  # 你原来的数据结构就行
         }
@@ -119,21 +120,17 @@ def process_ai_task(self, task_id: int):
         }
 
         ai_response = requests.request("POST", url, headers=headers, data=json.dumps(payload))
-        print("Response status:", ai_response.status_code)
-        print("Response text:", ai_response.text)
-
-        print("Response status:", ai_response.status_code)
-        print("Response text:", ai_response.text)
+        
 
         print('ai_response:', ai_response)
         
         if ai_response.status_code != 200:
             raise Exception(f"AI service error: {ai_response.text}")
             
-        ai_result = ai_response.json()
-        print('ai_result:', ai_result.json())
+        # ai_result = ai_response.json()
+        # print('ai_result:', ai_result.json())
 
-        
+        ai_result = ai_response
     
         
         # 6. 更新数据库中的AI结果
