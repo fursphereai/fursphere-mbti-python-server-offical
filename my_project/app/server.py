@@ -259,7 +259,10 @@ def check_signup():
 
 if __name__ == "__main__":
     import os
-    port = int(os.getenv("PORT", 8080))
+    port = int(os.getenv("PORT", "5000"))  # 默认为 5000，但 Railway 会注入 PORT
     app.run(host="0.0.0.0", port=port)
+
+
+    
 
 
