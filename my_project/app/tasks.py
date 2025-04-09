@@ -95,19 +95,32 @@ def process_ai_task(self, task_id: int):
     
  
 
-        url = AI_SERVER_URL.rstrip("/") + "/ai"
-        headers = {"Content-Type": "application/json"}
+        # url = AI_SERVER_URL.rstrip("/") + "/ai"
+        # headers = {"Content-Type": "application/json"}
 
-        print("Calling AI server at:", url)
-        print("Sending JSON:", {"input_data": ai_input})
+        # print("Calling AI server at:", url)
+        # print("Sending JSON:", {"input_data": ai_input})
    
 
-        ai_response = requests.post(
-            url,
-            headers=headers,
-            json={"input_data": ai_input},
-            timeout=200
-        )
+        # ai_response = requests.post(
+        #     url,
+        #     headers=headers,
+        #     json={"input_data": ai_input},
+        #     timeout=200
+        # )
+
+
+        url = "https://ai-server-production-b3f3.up.railway.app/ai"
+        payload = {
+            "input_data": ai_input  # 你原来的数据结构就行
+        }
+        headers = {
+            'Content-Type': 'application/json'
+        }
+
+        ai_response = requests.request("POST", url, headers=headers, data=json.dumps(payload))
+        print("Response status:", ai_response.status_code)
+        print("Response text:", ai_response.text)
 
         print("Response status:", ai_response.status_code)
         print("Response text:", ai_response.text)
