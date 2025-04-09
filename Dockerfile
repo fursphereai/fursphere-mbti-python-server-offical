@@ -8,5 +8,5 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["python", "PythonProject/my_project/app/server.py"]
+CMD ["python3", "my_project/app/server.py"]
 
