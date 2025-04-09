@@ -83,11 +83,29 @@ def process_ai_task(self, task_id: int):
         }
         
         
+        
         # 5. 调用AI服务
+        # ai_response = requests.post(
+        #     f"{AI_SERVER_URL}/ai",
+        #     json={"input_data": ai_input},
+        #     timeout=200  # 增加超时时间
+        # )
+
+ 
+
+        url = AI_SERVER_URL.rstrip("/") + "/ai"
+        headers = {"Content-Type": "application/json"}
+
+        print("Calling AI server at:", url)
+        print("Sending JSON:", {"input_data": ai_input})
+        print("Response status:", ai_response.status_code)
+        print("Response text:", ai_response.text)
+
         ai_response = requests.post(
-            f"{AI_SERVER_URL}ai",
+            url,
+            headers=headers,
             json={"input_data": ai_input},
-            timeout=200  # 增加超时时间
+            timeout=200
         )
 
         print('ai_response:', ai_response)
