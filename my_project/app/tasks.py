@@ -6,7 +6,7 @@ import requests
 from datetime import datetime
 from typing import Dict, Any
 from app.config import  AI_SERVER_URL, REDIS_URL
-from mbti_calculator import calculate_mbti
+from app.mbti_calculator import calculate_mbti
 from celery.utils.log import get_task_logger
 from pathlib import Path
 from dotenv import load_dotenv
