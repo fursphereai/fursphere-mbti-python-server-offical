@@ -17,8 +17,8 @@ from supabase import create_client
 
 
 
-env_path = Path(__file__).parent.parent / 'ai_service' / '.env'
-load_dotenv(env_path)
+# env_path = Path(__file__).parent.parent / 'ai_service' / '.env'
+# load_dotenv(env_path)
 
 # Initialize Supabase
 supabase_url = os.getenv('SUPABASE_URL')
