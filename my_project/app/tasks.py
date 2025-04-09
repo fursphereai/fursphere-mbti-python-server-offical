@@ -110,8 +110,7 @@ def process_ai_task(self, task_id: int):
         # )
 
 
-        # url = "https://ai-server-production-b3f3.up.railway.app/ai"
-        url = AI_SERVER_URL.rstrip("/") + "/ai"
+        url = "https://ai-server-production-b3f3.up.railway.app/ai"
         payload = {
             "input_data": ai_input  # 你原来的数据结构就行
         }
