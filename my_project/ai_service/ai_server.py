@@ -5,24 +5,19 @@ import openai
 import os
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
-from flask import Flask, request, jsonify
-from flask_cors import CORS
 
 load_dotenv()
 
-# app = FastAPI()
+app = FastAPI()
 
-# # Configure CORS
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=["*"],  # In production, set specific domains
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
-
-app = Flask(__name__)
-CORS(app)
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, set specific domains
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Configure OpenAI
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -197,8 +192,7 @@ def generate_mbti_do_dont(m_score, b_score, t_score, i_score):
         "Do Not": dont_final
     }
 
-# @app.post("/ai", response_model=MbtiOutput)
-@app.route('/ai', methods=['POST'], response_model=MbtiOutput)
+@app.post("/ai", response_model=MbtiOutput)
 async def process_ai(input: AIInput):
     try:
         # Get input data
