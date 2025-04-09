@@ -129,7 +129,7 @@ def process_ai_task(self, task_id: int):
         # ai_result = ai_response.json()
         # print('ai_result:', ai_result.json())
 
-        ai_result = ai_response
+        ai_result = ai_response.json()
     
         
         # 6. 更新数据库中的AI结果
