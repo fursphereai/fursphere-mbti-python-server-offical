@@ -91,6 +91,11 @@ def process_ai_task(self, task_id: int):
         #     timeout=200  # 增加超时时间
         # )
 
+
+        response = requests.post("http://ai-server-production-b3f3.up.railway.app/debug")
+        print("debug response:", response.status_code)
+        print("debug response:", response.text)
+
  
 
         url = AI_SERVER_URL.rstrip("/") + "/ai"

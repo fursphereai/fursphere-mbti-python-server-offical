@@ -192,6 +192,10 @@ def generate_mbti_do_dont(m_score, b_score, t_score, i_score):
         "Do Not": dont_final
     }
 
+@app.post("/debug")
+async def debug_post():
+    return {"message": "POST received successfully"}
+
 @app.post("/ai", response_model=MbtiOutput)
 async def process_ai(input: AIInput):
     try:
