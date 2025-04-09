@@ -92,10 +92,7 @@ def process_ai_task(self, task_id: int):
         # )
 
 
-        response = requests.post("http://ai-server-production-b3f3.up.railway.app/debug")
-        print("debug response:", response.status_code)
-        print("debug response:", response.text)
-
+    
  
 
         url = AI_SERVER_URL.rstrip("/") + "/ai"
