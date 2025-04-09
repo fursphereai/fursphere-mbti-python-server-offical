@@ -98,8 +98,7 @@ def process_ai_task(self, task_id: int):
 
         print("Calling AI server at:", url)
         print("Sending JSON:", {"input_data": ai_input})
-        print("Response status:", ai_response.status_code)
-        print("Response text:", ai_response.text)
+   
 
         ai_response = requests.post(
             url,
@@ -107,6 +106,9 @@ def process_ai_task(self, task_id: int):
             json={"input_data": ai_input},
             timeout=200
         )
+
+        print("Response status:", ai_response.status_code)
+        print("Response text:", ai_response.text)
 
         print('ai_response:', ai_response)
         
