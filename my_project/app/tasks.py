@@ -89,11 +89,14 @@ def process_ai_task(self, task_id: int):
             json={"input_data": ai_input},
             timeout=200  # 增加超时时间
         )
+
+        print('ai_response:', ai_response)
         
         if ai_response.status_code != 200:
             raise Exception(f"AI service error: {ai_response.text}")
             
         ai_result = ai_response.json()
+        print('ai_result:', ai_result.json())
 
         
     
