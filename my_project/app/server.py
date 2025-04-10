@@ -252,6 +252,43 @@ def check_signup():
             'status': 'error',
             'message': str(e)
         }), 500
+    
+
+
+@app.route('/check_test_times', methods=['GET'])
+def check_test_times():
+    try:
+      
+        email = request.args.get('email')
+        print(f'Email from query: {email}')
+        
+        result = supabase.table('user_pet_data')\
+            .select('test_times')\
+            .eq('email', email)\
+            .limit(1)\
+            .execute()
+        print('result:', result.data)
+        print('len(result.data):', len(result.data))
+            
+        if len(result.data) == 0:
+            return jsonify({
+                "status": "completed",  # Changed from 'error' to 'completed'
+                "test_times": 0  # Email doesn't exist, so not signed up
+            })
+    
+        return jsonify({
+            "status": "completed", 
+            "test_times": result.data[0].get('test_times')
+        })
+            
+            
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return jsonify({
+            'status': 'error',
+            'message': str(e)
+        }), 500
+
 
 
 # if __name__ == "__main__":
