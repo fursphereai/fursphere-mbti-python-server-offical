@@ -229,6 +229,8 @@ def check_signup():
         result = supabase.table('user_pet_data')\
             .select('signup')\
             .eq('email', email)\
+            .order('generated_at', desc=True)\
+            .limit(1)\
             .execute()
         print('result:', result.data)
         print('len(result.data):', len(result.data))
