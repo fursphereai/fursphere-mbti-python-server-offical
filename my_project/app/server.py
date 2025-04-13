@@ -88,8 +88,7 @@ def receive_data():
 
         result = supabase.table('user_pet_data').insert(insert_data).execute()
 
-        
-
+        print('result:', result)
 
         # cursor.execute("""
         #     INSERT INTO survey_data (
@@ -265,6 +264,7 @@ def check_test_times():
         result = supabase.table('user_pet_data')\
             .select('test_times')\
             .eq('email', email)\
+            .order('generated_at', desc=True)\
             .limit(1)\
             .execute()
         print('result:', result.data)
