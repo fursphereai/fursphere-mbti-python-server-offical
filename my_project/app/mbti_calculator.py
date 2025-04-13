@@ -1,6 +1,7 @@
 from typing import Dict, Any
 import pandas as pd
 import os
+import random  # 需要添加这个导入
 
 # 读取狗的MBTI分数数据
 def load_dog_mbti_scores():
@@ -24,6 +25,7 @@ def get_dog_breed_scores(breed: str) -> Dict[str, float]:
     }
 
 def calculate_behavior_scores(personality_behavior: Dict[str, Any]) -> Dict[str, float]:
+    # 计算原始分数，范围是-100到100
     result = {}
 
     def safe_float(value: Any) -> float:
@@ -86,17 +88,23 @@ def calculate_mbti(personality_behavior: Dict[str, Any], pet_type: str = None, p
     # 计算行为数据分数
     behavior_scores = calculate_behavior_scores(personality_behavior)
     
+    # 处理0分情况，随机加减14以内的数字
+    for dimension in behavior_scores:
+        if behavior_scores[dimension] == 0:
+            # 生成-14到14之间的随机数
+            random_adjustment = random.randint(-14, 14)
+            behavior_scores[dimension] = random_adjustment
+    
     # 如果是狗且有品种信息，结合品种预设分数
-    if pet_type == "Dog" and pet_breed:
-        breed_scores = get_dog_breed_scores(pet_breed)
-        if breed_scores:
-            # 使用权重计算：品种预设分数占40%，行为数据占60%
-            result = {}
-            for dimension in ["E/I", "S/N", "T/F", "J/P"]:
-                breed_score = breed_scores[dimension]
-                behavior_score = behavior_scores[dimension]
-                result[dimension] = breed_score * 0.2 + behavior_score * 0.8
-            return result
+    #if pet_type == "Dog" and pet_breed:
+        #breed_scores = get_dog_breed_scores(pet_breed)
+        #if breed_scores:
+            #result = {}
+            #for dimension in ["E/I", "S/N", "T/F", "J/P"]:
+                #breed_score = breed_scores[dimension]
+                #behavior_score = behavior_scores[dimension]
+                #result[dimension] = breed_score * 0.2 + behavior_score * 0.8
+            #return result
     
     # 如果不是狗或没有品种信息，只使用行为数据
     return behavior_scores 
