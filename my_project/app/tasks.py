@@ -12,6 +12,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 from supabase import create_client
+from datetime import datetime
+import pytz
+from tzlocal import get_localzone
 
 # Get the path to the .env file in ai_service
 
@@ -144,9 +147,12 @@ def process_ai_task(self, task_id: int):
         # ))
        
         # Convert the AI result to a proper JSON string before storing
+
+        local_tz = get_localzone()
+        local_time = datetime.now(local_tz)
         update_data = {
             'ai_output_text': json.dumps(ai_result, ensure_ascii=False),  # Convert dict to JSON string
-            'generated_at': datetime.now().isoformat(),
+            'generated_at': local_time.isoformat(),
         }
         
         result = supabase.table('user_pet_data').update(update_data).eq('submission_id', task_id).execute()
