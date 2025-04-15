@@ -152,7 +152,7 @@ def process_ai_task(self, task_id: int):
       
         update_data = {
             'ai_output_text': json.dumps(ai_result, ensure_ascii=False),  # Convert dict to JSON string
-            'generated_at': central_time.strftime("%Y-%m-%d %H:%M:%S"),
+            'generated_at': central_time,
         }
         
         result = supabase.table('user_pet_data').update(update_data).eq('submission_id', task_id).execute()
