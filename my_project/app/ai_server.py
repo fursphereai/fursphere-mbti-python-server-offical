@@ -296,19 +296,19 @@ async def process_ai(input: AIInput):
         # Create structured output for frontend
         output = {
             "m_label": map_score_to_label(mbti_scores['E/I'], 'E/I'),
-            "m_score": int(abs(mbti_scores['E/I']/2) + 50),  
+            "m_score": mbti_scores['E/I'], 
             "m_explanation": extract_section(ai_response, "E/I Explanation"),
             
             "b_label": map_score_to_label(mbti_scores['S/N'], 'S/N'),
-            "b_score": int(abs(mbti_scores['S/N']/2) + 50),
+            "b_score": mbti_scores['S/N'],
             "b_explanation": extract_section(ai_response, "S/N Explanation"),
             
             "t_label": map_score_to_label(mbti_scores['T/F'], 'T/F'),
-            "t_score": int(abs(mbti_scores['T/F']/2) + 50),
+            "t_score": mbti_scores['T/F'],
             "t_explanation": extract_section(ai_response, "T/F Explanation"),
             
             "i_label": map_score_to_label(mbti_scores['J/P'], 'J/P'),
-            "i_score": int(abs(mbti_scores['J/P']/2) + 50),
+            "i_score": mbti_scores['J/P'],
             "i_explanation": extract_section(ai_response, "J/P Explanation"),
             
             "personal_speech": extract_section(ai_response, "Personal Speech"),
