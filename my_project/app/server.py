@@ -77,10 +77,9 @@ def receive_data():
             'pet_gender': survey_data["pet_info"].get("PetGender", ""),
             'pet_age': survey_data["pet_info"].get("PetAge", ""),
             'pet_photo': survey_data["pet_info"].get("PetPhoto", ""),
+            'pet_photo_public_url': survey_data["pet_info"].get("PetPublicUrl", ""),
             'personality_behavior': survey_data.get("personality_and_behavior", {})
             #    json.dumps(survey_data.get("personality_and_behavior", {}))
-
-            
             }
         ]
 
